@@ -7,13 +7,13 @@ screen_width = 1000
 screen_height = 1000
 
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Platformer')
+pygame.display.set_caption('2D PLatformer')
 
-#define game variables
+#defines the games variables
 tile_size = 50
 
 
-#load images
+#loads images
 sun_img = pygame.image.load('img/sun.png')
 bg_img = pygame.image.load('img/sky.png')
 
@@ -23,7 +23,7 @@ def draw_grid():
 		pygame.draw.line(screen, (255, 255, 255), (line * tile_size, 0), (line * tile_size, screen_height))
 
 
-
+#creates the world and sets in values for the gameworld, within the x and y values.
 class World():
 	def __init__(self, data):
 		self.tile_list = []
@@ -53,6 +53,7 @@ class World():
 				col_count += 1
 			row_count += 1
 
+
 	def draw(self):
 		for tile in self.tile_list:
 			screen.blit(tile[0], tile[1])
@@ -71,7 +72,7 @@ world_data = [
 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 7, 0, 0, 0, 0, 1], 
 [1, 0, 2, 0, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 
 [1, 0, 0, 2, 0, 0, 4, 0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 1], 
-[1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 1], 
+[1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 1], 
 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 
 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 0, 0, 2, 0, 1], 
 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 
@@ -81,14 +82,14 @@ world_data = [
 [1, 0, 0, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
 [1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
-
+#the grid for the size of the game world 
 
 
 
 world = World(world_data)
 
 run = True
-while run:
+while run: # while loop keeps the game running under specific coniditions
 
 	screen.blit(bg_img, (0, 0))
 	screen.blit(sun_img, (100, 100))
